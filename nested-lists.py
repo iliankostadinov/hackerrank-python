@@ -10,3 +10,7 @@ if __name__ == '__main__':
         snl = [sn]
         snl.append(sg)
         nl.append(snl)
+
+    nl.sort(key=lambda student: student[1])
+
+    print(nl)
