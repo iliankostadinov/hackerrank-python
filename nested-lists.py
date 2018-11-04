@@ -11,13 +11,13 @@ if __name__ == '__main__':
     ns = input("Plese enter number of students\n")
     for n in range(int(ns)):
         sn = input("Please input student name\n")
-        sg = input("Please input student grade\n")
+        sg = float(input("Please input student grade\n"))
         snl = [sn]
         snl.append(sg)
         nl.append(snl)
 
     nl.sort(key=lambda student: student[1])
-    
+
     i = 1
     if nl[0][1] == nl[1][1]:
         listForPrint = [nl[0][0]]
@@ -25,7 +25,7 @@ if __name__ == '__main__':
             listForPrint.append(nl[i][0])
             i += 1
         if i == int(ns) - 1:
-            listForPrint.sort()
+            listForPrint = [nl[i][0]]
         else:
             listForPrint = [nl[i][0]]
             while (nl[i][1] == nl[i+1][1]):
@@ -34,13 +34,18 @@ if __name__ == '__main__':
             listForPrint.sort()
 
     else:
-            listForPrint = [nl[i][0]]
-            while (nl[i][1] == nl[i+1][1]):
-                listForPrint.append(nl[i+1][0])
-                i += 1
+        listForPrint = [nl[i][0]]
+        while (nl[i][1] == nl[i+1][1]):
+            listForPrint.append(nl[i+1][0])
+            i += 1
             listForPrint.sort()
-    for names in listForPrint:
-        print(names)
+            if i == int(ns)-1:
+                break
+    if len(listForPrint) > 1:
+        for names in listForPrint:
+            print(names)
+    else:
+        print(listForPrint[0])
 
 
 
